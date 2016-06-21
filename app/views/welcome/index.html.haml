@@ -1,0 +1,12 @@
+%h1 Hello, Rails!
+= link_to 'My Blog', controller: 'articles'
+%table
+  %tr
+    %th Title
+    %th Text
+    %th Publish Date
+  - @articles.each do |article|
+    %tr
+      %td= article.title
+      %td= article.text
+      %td= article.created_at
