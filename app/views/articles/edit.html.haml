@@ -1,3 +1,7 @@
-%h1.text-center Edit article
-= render 'form'
-%h3.text-center{ :style => "position: relative; left: 65%; top: 5%; width : 20%" }= link_to 'Go Back', articles_path
+.row
+  %h1.text-center
+    Edit article
+    = render 'form'
+.row
+  %h3.text-center
+    = link_to 'Go Back', articles_path

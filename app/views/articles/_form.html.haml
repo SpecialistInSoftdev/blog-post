@@ -1,19 +1,22 @@
 = bootstrap_form_for @article do |f|
   - if @article.errors.any?
     #error_explanation
-      %h2.text-center
-        = pluralize(@article.errors.count, "error")
-        prohibited
-        this article from being saved:
-      %ul.text-center
-        - @article.errors.full_messages.each do |msg|
-          %li= msg
-  
-  %br
-    %h4.text-center
-      = f.text_field :title, style:"position: relative; left: 20%; width : 60%;"
-  %br
-    %h4.text-center
-      = f.text_area :text, style:"position: relative; left: 20%; width : 60%;"
-  %p.text-center
-    = f.submit  'Submit This Article',:class => "btn btn-primary"
+      .row
+        %h2.text-center
+          = pluralize(@article.errors.count, "error")
+          prohibited
+          this article from being saved:
+        %ul.text-center
+          - @article.errors.full_messages.each do |msg|
+            %li= msg
+  .row  
+    %br
+      %h4.text-center
+        = f.text_field :title
+  .row
+    %br
+      %h4.text-center
+        = f.text_area :text
+  .row
+    %p.text-center
+      = f.submit  'Submit This Article',:class => "btn btn-primary"
