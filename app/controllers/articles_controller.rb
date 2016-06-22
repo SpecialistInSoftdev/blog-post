@@ -5,7 +5,6 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
-    flash[:notice] = "Artical successfully created"
   end
 
   def show
@@ -15,6 +14,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
+      flash[:notice] = "Artical successfully created"
       redirect_to @article
     else
       render 'new'

@@ -1,11 +1,7 @@
-= form_for([@article, @article.comments.build]) do |f|
+= bootstrap_form_for([@article, @article.comments.build]) do |f|
   %p
-    = f.label :commenter
-    %br
-      = f.text_field :commenter
+    = f.text_field :commenter, style:"position: relative; left: 20%; width : 60%;"
   %p
-    = f.label :body
-    %br
-      = f.text_area :body
+    = f.text_area :body, style:"position: relative; left: 20%; width : 60%; hieght : 30%"
   %p
-    = f.submit
+    = f.submit 'Add Comment',:class => "btn btn-primary"

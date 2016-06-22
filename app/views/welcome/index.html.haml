@@ -1,6 +1,5 @@
-%h1 Hello, Rails!
-= link_to 'My Blog', controller: 'articles'
-%table
+%h1.text-center Current Articals for You
+%table.table.table-striped{ :style => "position: absolute; left: 15%; top: 15%; width : 100%" }
   %tr
     %th Title
     %th Text
@@ -10,3 +9,4 @@
       %td= article.title
       %td= article.text
       %td= article.created_at
+%h3.text-center{ :style => "position: relative; left: 65%; top: 65%; width : 20%" }= link_to 'Go to My Blog', controller: 'articles'

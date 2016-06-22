@@ -1,8 +1,9 @@
-%h1 Listing articles
-= link_to 'New article', new_article_path
+- javascript_include_tag :defaults
+%h1.text-center Listing articles
+%h4.text-right= link_to 'Create New article', new_article_path
 - if flash[:notice]
   .notice= flash[:notice]
-%table
+%table.table.table-striped
   %tr
     %th Title
     %th Text
