@@ -1,4 +1,10 @@
 source 'https://rubygems.org'
+
+gem "binding_of_caller"
+
+group :development do
+  gem "better_errors"
+end
 # basic form
 gem 'bootstrap_form'
 
@@ -28,7 +34,10 @@ gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 
+gem 'devise'
+
 gem "twitter-bootstrap-rails"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
