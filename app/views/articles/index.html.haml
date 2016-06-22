@@ -1,19 +1,30 @@
 - javascript_include_tag :defaults
-%h1.text-center Listing articles
-%h4.text-right= link_to 'Create New article', new_article_path
+.row
+  %h1.text-center Listing articles
+.row
+  .col-xs-3
+    %h4 Aritles Page
+  .col-xs-3
+    %h4 Aritles Page
+  .col-xs-3
+    %h4 Aritles Page
+  .col-xs-3
+    %h4.text-right= link_to 'Create New article', new_article_path
 - if flash[:notice]
-  .notice= flash[:notice]
-%table.table.table-striped
-  %tr
-    %th Title
-    %th Text
-    %th{:colspan => "3"}
-  - @articles.each do |article|
+  .row
+    .notice= flash[:notice]
+.row
+  %table.table.table-striped
     %tr
-      %td= article.title
-      %td= article.text
-      %td= link_to 'Show', article_path(article)
-      %td= link_to 'Edit', edit_article_path(article)
-      %td= link_to 'Destroy', article_path(article), |
-          method: :delete,                          |
-          data: { confirm: 'Are you sure?' }        |
+      %th Title
+      %th Text
+      %th{:colspan => "3"}
+    - @articles.each do |article|
+      %tr
+        %td= article.title
+        %td= article.text
+        %td= link_to 'Show', article_path(article)
+        %td= link_to 'Edit', edit_article_path(article)
+        %td= link_to 'Destroy', article_path(article), |
+            method: :delete,                          |
+            data: { confirm: 'Are you sure?' }        |

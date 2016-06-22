@@ -1,12 +1,17 @@
-%h1.text-center Current Articals for You
-%table.table.table-striped{ :style => "position: absolute; left: 15%; top: 15%; width : 100%" }
-  %tr
-    %th Title
-    %th Text
-    %th Publish Date
-  - @articles.each do |article|
+.row
+  %h1.text-center Current Articals for You
+.row
+  %table.table
     %tr
-      %td= article.title
-      %td= article.text
-      %td= article.created_at
-%h3.text-center{ :style => "position: relative; left: 65%; top: 68%; width : 20%" }= link_to 'Go to My Blog', controller: 'articles'
+      %th Title
+      %th Text
+      %th Publish Date
+    - @articles.each do |article|
+      %tr
+        %td= article.title
+        %td= article.text
+        %td= article.created_at
+.row
+  .col-md-12.text-right
+    %h3
+      = link_to 'Go to My Blog', controller: 'articles'
