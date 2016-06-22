@@ -1,12 +1,21 @@
 source 'https://rubygems.org'
 
+gem "binding_of_caller"
+
+group :development do
+  gem "better_errors"
+end
+# basic form
+gem 'bootstrap_form'
+
+gem "haml-rails", "~> 0.9"
+
 gem 'haml'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -24,7 +33,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
-gem 'twitter-bootstrap-rails', '~> 3.2', '>= 3.2.2'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'sass-rails', '>= 3.2'
+
+gem 'devise'
+
+gem "twitter-bootstrap-rails"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -35,7 +50,6 @@ gem 'twitter-bootstrap-rails', '~> 3.2', '>= 3.2.2'
 # gem 'capistrano-rails', group: :development
 
 # added by me
-gem 'bootstrap', '~> 4.0.0.alpha3'
 #gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :development, :test do
@@ -50,4 +64,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

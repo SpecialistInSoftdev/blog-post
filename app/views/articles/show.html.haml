@@ -1,13 +1,17 @@
-%p
-  %strong Title:
+%h3.p.text-center
+  %strong Artical Title:
   = @article.title
-%p
-  %strong Text:
+%h3.p.text-center
+  %strong Artical Content:
   = @article.text
-%h2 Comments
-= render @article.comments
-%h2 Add a comment:
-= render 'comments/form'
-= link_to 'Edit', edit_article_path(@article)
-|
-\#{link_to 'Back', articles_path}
+%h4.p.text-left
+  = render @article.comments
+%br
+
+%h3.p.text-center
+  Add Your Comment
+%h4.p.text-center
+  = render 'comments/form'
+  = link_to 'Edit', edit_article_path(@article)
+  |
+  \#{link_to 'Back', articles_path}

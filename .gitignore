@@ -16,3 +16,5 @@
 /log/*
 !/log/.keep
 /tmp
+secrets.yml
+.byebug_history
