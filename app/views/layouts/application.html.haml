@@ -5,14 +5,68 @@
     = csrf_meta_tags
   %body
     .container
-      - if user_signed_in?
-        %li
-          = link_to('Logout', destroy_user_session_path, :method => :delete)
-        %li
-          = link_to('Edit registration', edit_user_registration_path)
-      - else
-        %li
-          = link_to('Login', new_user_session_path)
+      .row
+        / Static navbar
+        %nav.navbar.navbar-default
+          .container-fluid.maxWidth
+            .navbar-header
+              %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+                %span.sr-only Toggle navigation
+                %span.icon-bar
+                %span.icon-bar
+                %span.icon-bar
+              .col-sm-6
+                %img.img-responsive.img-circle
+                  = link_to image_tag('blog-post-logo.png' ,height: '40', width: '102' , class: "css-style"), '/'
+            #navbar.navbar-collapse.collapse
+              %ul.nav.navbar-nav
+                %li.active
+                  %a{:href => "#"} Home
+                %li
+                  %a{:href => "#"} About
+                %li
+                  %a{:href => "#"} Contact Us
+                %li.dropdown
+                  %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                    Categories
+                    %span.caret
+                  %ul.dropdown-menu
+                    %li
+                      %a{:href => "#"} Gadgets
+                    %li
+                      %a{:href => "#"} Gaming
+                    %li
+                      %a{:href => "#"} Culture
+                    %li
+                      %a{:href => "#"} Entertainment
+                    %li
+                      %a{:href => "#"} Reviews
+                    %li.divider{:role => "separator"}
+                    %li.dropdown-header Tech Zone
+                    %li
+                      %a{:href => "#"} Robotics
+                    %li
+                      %a{:href => "#"} AI
+                    %li
+                      %a{:href => "#"} NLP
+                    %li
+                      %a{:href => "#"} Complete list
+              %ul.nav.navbar-nav.navbar-right
+                - if user_signed_in?
+                  %li
+                    = link_to('Logout', destroy_user_session_path, :method => :delete)
+                  %li
+                    = link_to('Edit registration', edit_user_registration_path)
+                  %li
+                    = link_to 'Your Blogs', articles_path
+                - else
+                  %li
+                    = link_to('Login', new_user_session_path)
+                  
+            / /.nav-collapse
+          / /.container-fluid
+
+
       = yield
       %p.notice= notice
       %p.alert= alert

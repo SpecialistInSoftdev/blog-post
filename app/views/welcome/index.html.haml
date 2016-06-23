@@ -1,17 +1,45 @@
 .row
-  %h1.text-center Recent Articles for You
-.row
-  %table.table
-    %tr
-      %th Title
-      %th Text
-      %th Publish Date
-    - @articles.each do |article|
+  .col-sm-8
+    %h1.text-center Recent Articles for You
+    %table.table
       %tr
-        %td= article.title
-        %td= article.text
-        %td= article.created_at
-.row
-  .col-md-12.text-right
-    %h3
-      = link_to 'your articles', controller: 'articles'
+        %th Title
+        %th Text
+        %th Publish Date
+      - @articles.each do |article|
+        %tr
+          %td= article.title
+          %td= article.text
+          %td= article.created_at
+  .col-sm-4
+    / Blog Sidebar Widgets Column
+    .well
+      %h4 Blog Search
+      .input-group
+        %input.form-control{:type => "text"}
+          %span.input-group-btn
+            %button.btn.btn-default{:type => "button"}
+              %span.glyphicon.glyphicon-search
+      / /.input-group
+    / Blog Categories Well
+    .well
+      %h4 Recent Posts
+      .row
+        .col-lg-6
+          %ul.list-unstyled
+            %li
+              %a{:href => "#"} First Post
+            %li
+              %a{:href => "#"} Second Post 
+            %li
+              %a{:href => "#"} Third
+            %li
+              %a{:href => "#"} And So on
+
+    / Side Widget Well
+    .well
+      %h4 Side Widget Space
+      %p This is the space for side widget , RSS feed notification etc
+  / /.row
+  %well
+    = link_to 'your articles', controller: 'articles'    
