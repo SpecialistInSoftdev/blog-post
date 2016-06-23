@@ -5,9 +5,9 @@ gem "binding_of_caller"
 group :development do
   gem "better_errors"
 end
-# basic form
+# basic bootstrap form
 gem 'bootstrap_form'
-
+# erb to haml convertor
 gem "haml-rails", "~> 0.9"
 
 gem 'haml'
@@ -26,19 +26,26 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+# provide schema details 
+gem 'annotate'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
-
+# profiler
+gem 'rack-mini-profiler'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 
 gem 'devise'
 
 gem "twitter-bootstrap-rails"
+
+gem "rails_best_practices"
+
+gem "letter_opener", :group => :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
