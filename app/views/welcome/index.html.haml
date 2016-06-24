@@ -10,6 +10,7 @@
         %tr
           %td= article.title
           %td= article.text
+          %td= image_tag article.image.url(:thumb)
           %td= article.created_at
   .col-sm-4
     / Blog Sidebar Widgets Column
@@ -41,5 +42,3 @@
       %h4 Side Widget Space
       %p This is the space for side widget , RSS feed notification etc
   / /.row
-  %well
-    = link_to 'your articles', controller: 'articles'    

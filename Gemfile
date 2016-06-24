@@ -36,8 +36,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 # profiler
 gem 'rack-mini-profiler'
+
 gem 'bootstrap-sass', '~> 3.3.6'
+
 gem 'sass-rails', '>= 3.2'
+
+gem "paperclip", "~> 5.0.0.beta1"
 
 gem 'devise'
 
