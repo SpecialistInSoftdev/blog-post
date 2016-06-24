@@ -29,3 +29,4 @@
         %td= link_to 'Destroy', article_path(article), |
             method: :delete,                          |
             data: { confirm: 'Are you sure?' }        |
+    = will_paginate @articles

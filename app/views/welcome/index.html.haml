@@ -12,6 +12,7 @@
           %td= article.text
           %td= image_tag article.image.url(:thumb)
           %td= article.created_at
+      = will_paginate @articles
   .col-sm-4
     / Blog Sidebar Widgets Column
     .well
