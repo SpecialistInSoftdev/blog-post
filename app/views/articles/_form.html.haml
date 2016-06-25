@@ -1,4 +1,4 @@
-= bootstrap_form_for @article do |f|
+= bootstrap_form_for @article, html: { multipart: true } do |f|
   - if @article.errors.any?
     #error_explanation
       .row
@@ -9,6 +9,14 @@
         %ul.text-center
           - @article.errors.full_messages.each do |msg|
             %li= msg
+  .row  
+    %br
+      %h4.text-center
+        = f.text_field :tag_list
+  .row  
+    %br
+      %h4.text-center
+        = f.file_field :image
   .row  
     %br
       %h4.text-center
