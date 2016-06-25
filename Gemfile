@@ -45,6 +45,10 @@ gem 'will_paginate', '~> 3.1.0'
 
 gem "paperclip", "~> 5.0.0.beta1"
 
+gem 'acts-as-taggable-on', '~> 3.4'
+
+gem 'therubyracer'
+
 gem 'devise'
 
 gem "twitter-bootstrap-rails"
@@ -53,6 +57,7 @@ gem "rails_best_practices"
 
 gem "letter_opener", :group => :development
 
+gem 'ckeditor'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

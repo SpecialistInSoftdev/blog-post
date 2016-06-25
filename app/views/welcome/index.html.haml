@@ -3,9 +3,20 @@
     %h1.text-center Recent Articles for You
     %table.table
       %tr
-        %th Title
-        %th Text
-        %th Publish Date
+        %th
+          /- s = sortable "title", "Title"+" "
+          = sortable "title", "Title"+" "
+          -if sortable "title", "Title"+" "
+            = get_img "title", "Title"
+        %th
+          = sortable "text", "Content "
+          -if sortable "text", "Content "
+            = get_img "text", "Content "
+        %th Image Thumbnail
+        %th
+          = sortable "created_at", "Publish Date "
+          -if sortable "created_at", "Publish Date "
+            = get_img "created_at", "Publish Date "
       - @articles.each do |article|
         %tr
           %td= article.title

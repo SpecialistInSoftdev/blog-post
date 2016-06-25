@@ -3,7 +3,22 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @articles = Article.paginate(:page => params[:page], :per_page => 4)
+    params[:sort] ||= "title"
+    params[:direction] ||= "asc"
+    
+    if params[:sort] != "title" && params[:sort] != "text" && params[:sort] != "created_at"
+      params[:sort] = "title"
+    end
+    #handle boundary cases : if user enter an messy url for sort which doesn't exist : then set to default sort by name
+    if params[:direction] != "asc" && params[:direction] != "desc"
+      params[:direction] = "asc"
+    end
+    
+    if params[:tag]
+      @articles = Article.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 4).order(params[:sort] + " " + params[:direction])
+    else
+      @articles = Article.paginate(:page => params[:page], :per_page => 4).order(params[:sort] + " " + params[:direction])
+    end
 
   end
 
@@ -48,6 +63,6 @@ class ArticlesController < ApplicationController
   
   private
   def article_params
-    params.require(:article).permit(:title, :text, :image)
+    params.require(:article).permit(:title, :text, :image, :tag_list)
   end
 end

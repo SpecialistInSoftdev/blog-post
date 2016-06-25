@@ -16,17 +16,35 @@
 .row
   %table.table.table-striped
     %tr
-      %th Title
-      %th Text
-      %th{:colspan => "3"}
+      %th 
+        = sortable "title", "Title"+" "
+        -if sortable "title", "Title"+" "
+          = get_img "title", "Title"
+      %th 
+        = sortable "text", "Content "
+        -if sortable "text", "Content "
+          = get_img "text", "Content "
+      %th 
+        = sortable "created_at", "Publish Date "
+        -if sortable "created_at", "Publish Date "
+          = get_img "created_at", "Publish Date "
+
+      %th Poster
+      %th Show
+      %th Modify
+      %th Remove
+      %th.align-right Tags
     - @articles.each do |article|
       %tr
         %td= article.title
         %td= article.text
+        %td= article.created_at
         %td= image_tag article.image.url(:thumb)
         %td= link_to 'Show', article_path(article)
         %td= link_to 'Edit', edit_article_path(article)
         %td= link_to 'Destroy', article_path(article), |
             method: :delete,                          |
             data: { confirm: 'Are you sure?' }        |
+        %td= raw article.tag_list.map { |t| link_to t,tag_path(t) }.join(', ')
     = will_paginate @articles
+    

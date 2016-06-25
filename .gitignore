@@ -18,3 +18,4 @@
 /tmp
 secrets.yml
 .byebug_history
+/public/system/images/*
