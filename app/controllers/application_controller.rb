@@ -13,8 +13,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-#  def set_global_search_variable
-#    @search  = Article.search(:q)
-#  end
-  
 end

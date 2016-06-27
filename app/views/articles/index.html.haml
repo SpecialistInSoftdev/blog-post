@@ -1,15 +1,35 @@
 - javascript_include_tag :defaults
 .row
-  %h1.text-center Listing articles
-.row
-  .col-xs-3
-    %h4 Aritles Page
-  .col-xs-3
-    %h4 Aritles Page
-  .col-xs-3
-    %h4 Aritles Page
-  .col-xs-3
+  .col-sm-5
+    %h1 
+  .col-sm-5
+    %h1 Listing articles
+  .col-sm-2
     %h4.text-right= link_to 'Create New article', new_article_path
+.row
+  .col-xs-4
+    / Blog Sidebar Widgets Column
+    .form-group
+      %h4 Title Search
+      .input-group
+        = search_form_for @search, url: articles_url do |f|
+          %span.input-group-btn
+            = f.text_field :title_cont, :class => "form-control"
+            %button.btn.btn-default{:type => "submit"}
+              %span.glyphicon.glyphicon-search 
+
+  .col-xs-4
+    / Blog Sidebar Widgets Column
+    .form-group
+      %h4 new tag Search
+      .input-group
+        = search_form_for @search, url: articles_url do |f|
+          %span.input-group-btn
+            = f.select :tags_name_cont, options_for_select(@tags), {}, {required: 'true', autofocus: 'true', class: 'e1', prompt: 'Please select'}
+            %button.btn.btn-default{:type => "submit"}
+              %span.glyphicon.glyphicon-search
+
+
 - if flash[:notice]
   .row
     .notice= flash[:notice]
