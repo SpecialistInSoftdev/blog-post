@@ -4,7 +4,6 @@
     %table.table
       %tr
         %th
-          /- s = sortable "title", "Title"+" "
           = sortable "title", "Title"+" "
           -if sortable "title", "Title"+" "
             = get_img "title", "Title"
@@ -26,12 +25,13 @@
       = will_paginate @articles
   .col-sm-4
     / Blog Sidebar Widgets Column
-    .well
+    .form-group
       %h4 Blog Search
       .input-group
-        %input.form-control{:type => "text"}
+        = search_form_for @search, url: welcome_index_url do |f|
           %span.input-group-btn
-            %button.btn.btn-default{:type => "button"}
+            = f.text_field :title_cont, :class => "form-control"
+            %button.btn.btn-default{:type => "submit"}
               %span.glyphicon.glyphicon-search
       / /.input-group
     / Blog Categories Well
