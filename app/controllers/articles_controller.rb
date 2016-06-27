@@ -13,11 +13,13 @@ class ArticlesController < ApplicationController
     if params[:direction] != "asc" && params[:direction] != "desc"
       params[:direction] = "asc"
     end
+    @search = Article.search(params[:q])
+    @tags = ActsAsTaggableOn::Tag.all
     
     if params[:tag]
-      @articles = Article.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 4).order(params[:sort] + " " + params[:direction])
+      @articles = @search.result.includes(:tags).tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 4).order(params[:sort] + " " + params[:direction])
     else
-      @articles = Article.paginate(:page => params[:page], :per_page => 4).order(params[:sort] + " " + params[:direction])
+      @articles = @search.result.includes(:tags).paginate(:page => params[:page], :per_page => 4).order(params[:sort] + " " + params[:direction])
     end
 
   end
