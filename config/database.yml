@@ -10,16 +10,16 @@ development:
   reconnect: false
   database: blogpost
   pool: 5
-  username: root
-  password: **pass**
+  username: <%= Rails.application.secrets[:mysql_user] %>
+  password: <%= Rails.application.secrets[:mysql_pass] %>
 test:
   adapter: mysql
   encoding: utf8
   reconnect: false
   database: blogpost
   pool: 5
-  username: root
-  password: **pass**
+  username: <%= Rails.application.secrets[:mysql_user] %>
+  password: <%= Rails.application.secrets[:mysql_pass] %>
 
 production:
   adapter: mysql
@@ -27,5 +27,5 @@ production:
   reconnect: false
   database: blogpost
   pool: 5
-  username: root
-  password: **pass**
+  username: <%= Rails.application.secrets[:mysql_user] %>
+  password: <%= Rails.application.secrets[:mysql_pass] %>
