@@ -44,6 +44,7 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    unauthorized! if cannot? :update, @article
   end
   
   def update

@@ -22,4 +22,18 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+  belongs_to :role
+  before_create :set_default_role
+  roles = %w[admin moderator author registered]
+
+  def role?(role)
+    puts "\n\n\n\nyo bebe #{role}\n\n\n\n"
+    self.role.name == role.to_s 
+  end 
+
+  private
+  def set_default_role
+    self.role ||= Role.find_by_name('registered')
+  end
+
 end
