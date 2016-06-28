@@ -18,6 +18,6 @@
 /tmp
 secrets.yml
 .byebug_history
-/public/system/images/*
+/public/system/articles/images/*
 /db/data.yml
 config.database.yml.sqlite3
