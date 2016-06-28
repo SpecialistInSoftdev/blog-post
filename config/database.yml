@@ -11,7 +11,7 @@ development:
   database: blogpost
   pool: 5
   username: root
-  password: ilovemyself
+  password: **pass**
 test:
   adapter: mysql
   encoding: utf8
@@ -19,7 +19,7 @@ test:
   database: blogpost
   pool: 5
   username: root
-  password: ilovemyself
+  password: **pass**
 
 production:
   adapter: mysql
@@ -28,4 +28,4 @@ production:
   database: blogpost
   pool: 5
   username: root
-  password: ilovemyself
+  password: **pass**
