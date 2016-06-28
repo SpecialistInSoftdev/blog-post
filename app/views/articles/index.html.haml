@@ -25,7 +25,7 @@
       .input-group
         = search_form_for @search, url: articles_url do |f|
           %span.input-group-btn
-            = f.select :tags_name_cont, options_for_select(@tags), {}, {required: 'true', autofocus: 'true', class: 'e1', prompt: 'Please select'}
+            = f.select :tags_name_cont, options_for_select(@tags), {}, {required: 'true', autofocus: 'true', class: 'e1', placeholder: 'Please select'}
             %button.btn.btn-default{:type => "submit"}
               %span.glyphicon.glyphicon-search
 

@@ -36,30 +36,44 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 # profiler
 gem 'rack-mini-profiler'
-
+# add bootstrap-saas
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'sass-rails', '>= 3.2'
-
+# for pagination
 gem 'will_paginate', '~> 3.1.0'
-
+# image/document upload
 gem "paperclip", "~> 5.0.0.beta1"
-
+# add tags
 gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'therubyracer'
-
+# add login/logout/registration
 gem 'devise'
+# jquery selector
+gem "select2-rails"
 
+
+# bootstrap
 gem "twitter-bootstrap-rails"
-
+# best practice guide tool
 gem "rails_best_practices"
 
 gem "letter_opener", :group => :development
-
+# text editor
 gem 'ckeditor'
-
+# add text search
 gem 'ransack'
+# for data backup from sqlite db
+gem 'yaml_db'
+# add mysql
+gem 'mysql'
+# gem for env variable setup
+group :development do
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-secrets-yml', '~> 1.0.0'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
