@@ -51,6 +51,10 @@ gem 'therubyracer'
 
 gem 'devise'
 
+gem "select2-rails"
+
+
+
 gem "twitter-bootstrap-rails"
 
 gem "rails_best_practices"
@@ -60,6 +64,11 @@ gem "letter_opener", :group => :development
 gem 'ckeditor'
 
 gem 'ransack'
+# for data backup from sqlite db
+gem 'yaml_db'
+
+gem 'mysql'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -19,3 +19,5 @@
 secrets.yml
 .byebug_history
 /public/system/images/*
+/db/data.yml
+config.database.yml.sqlite3
