@@ -24,10 +24,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :role
   before_create :set_default_role
-  roles = %w[admin moderator author registered]
 
   def role?(role)
-    puts "\n\n\n\nyo bebe #{role}\n\n\n\n"
+    puts "\n\n\n\nStatus =  #{role} and status : #{self.role.name == role.to_s}\n\n\n\n"
     self.role.name == role.to_s 
   end 
 

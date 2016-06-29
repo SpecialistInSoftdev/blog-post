@@ -5,7 +5,8 @@
   .col-sm-5
     %h1 Listing articles
   .col-sm-2
-    %h4.text-right= link_to 'Create New article', new_article_path
+    - if can? :create, Article
+      %h4.text-right= link_to 'Create New article', new_article_path
 .row
   .col-xs-4
     / Blog Sidebar Widgets Column
@@ -58,12 +59,16 @@
         %td= article.created_at
         %td= image_tag article.image.url(:thumb)
         %td= link_to 'Show', article_path(article)
-        - if can? :update, @article
+        - if can? :update, Article
           %td= link_to 'Edit', edit_article_path(article)
-        - if can? :update, @article
+        -else
+          %td= "Restricted Access"
+        - if can? :destroy, Article
           %td= link_to 'Destroy', article_path(article), |
               method: :delete,                          |
               data: { confirm: 'Are you sure?' }        |
+        -else
+          %td= "Restricted Access"
         %td= raw article.tag_list.map { |t| link_to t,tag_path(t) }.join(', ')
     = will_paginate @articles
     

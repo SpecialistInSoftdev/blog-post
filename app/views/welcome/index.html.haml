@@ -16,6 +16,8 @@
           = sortable "created_at", "Publish Date "
           -if sortable "created_at", "Publish Date "
             = get_img "created_at", "Publish Date "
+        %th
+          = "Action"
       - @articles.each do |article|
         %tr
           %td= link_to article.title ,article_path(article)
