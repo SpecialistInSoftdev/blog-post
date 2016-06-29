@@ -6,7 +6,20 @@
   %strong Artical Content:
   = @article.text
 %h4.p.text-left
-  = render @article.comments
+  - @article.comments.each do |comment|
+    = "@#{comment.commenter} :"
+    %br
+    = comment.body
+    %br
+    - if can? :destroy, Comment
+      - if current_user.id == comment.user_id  or current_user.role.name == 'admin'
+        %p
+          = link_to 'Destroy Comment', [comment.article, comment], |
+            method: :delete,                                       |
+            data: { confirm: 'Are you sure?' }                     |
+    %br
+    %br
+    %br
 %br
 
 %h3.p.text-center

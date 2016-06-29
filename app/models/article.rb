@@ -20,7 +20,8 @@ class Article < ActiveRecord::Base
   acts_as_taggable # Alias for acts_as_taggable_on :tags
   acts_as_taggable_on :tag_list
 
-
+  belongs_to :user
+  
   def should_generate_new_friendly_id?
     title_changed?
   end

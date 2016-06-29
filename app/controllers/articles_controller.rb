@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    unauthorized! if cannot? :create, @article
+    authorize! :create, @article
     if @article.save
       flash[:notice] = "Artical successfully created"
       redirect_to @article
@@ -45,12 +45,13 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
-    unauthorized! if cannot? :update, @article
+    authorize! :update, @article
+    #authorized! if can? :update, @article or current_user.id == @article.user_id
   end
   
   def update
     @article = Article.find(params[:id])
-    unauthorized! if cannot? :update, @article
+    authorize! :update, @article
     if @article.update(article_params)
       flash[:notice] = "Artical successfully updated"
       redirect_to @article
@@ -61,7 +62,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
-    unauthorized! if cannot? :destroy, @article
+    authorize! :destroy, @article
     @article.destroy
     flash[:notice] = "Artical successfully Deleted"
     redirect_to articles_path
