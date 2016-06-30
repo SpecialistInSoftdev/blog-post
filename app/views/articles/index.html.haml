@@ -54,9 +54,6 @@
       %th.align-right Tags
     - @articles.each do |article|
       %tr
-        = "userid=#{article.user.try(:id)}"
-        = "curr_usr=#{current_user.id}"
-        = current_user.role.name
         %td= article.title
         %td= article.text
         %td= article.created_at
