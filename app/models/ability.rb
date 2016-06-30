@@ -2,7 +2,6 @@
   include CanCan::Ability
 
   def initialize(user)
-    puts "\n\n\n\n user =  #{user.role.id}\n\n\n\n"
     user ||= User.new # guest user
     can :read, :all
     can [:update, :destroy, :create], [Comment]
