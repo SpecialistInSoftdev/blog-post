@@ -2,10 +2,12 @@
   include CanCan::Ability
 
   def initialize(user)
-    puts "\n\n\n\n user =  #{user.role.id}\n\n\n\n"
     user ||= User.new # guest user
     can :read, :all
-    can [:update, :destroy, :create], [Comment]
+    can :create, Comment
+    can :manage, Comment do |comment|
+      comment.try(:commenter).eql?(user.email)
+    end
 
     if user.role? :admin
       can :manage, :all

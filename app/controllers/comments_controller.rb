@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
     params = comment_params
     params[:commenter] = current_user.email.split('@')[0]
     params[:user_id] = current_user.id
-    puts "\n\n\n\n\n new params = #{params}\n\n\n\n\n\n"
     @comment = @article.comments.create(params)
     redirect_to article_path(@article)
   end

@@ -54,9 +54,6 @@
       %th.align-right Tags
     - @articles.each do |article|
       %tr
-        = "userid=#{article.user.try(:id)}"
-        = "curr_usr=#{current_user.id}"
-        = current_user.role.name
         %td= article.title
         %td= article.text
         %td= article.created_at
@@ -66,9 +63,11 @@
           - if (current_user.id == article.user_id and current_user.role.name == 'author') or current_user.role.name == 'admin'
             %td= link_to 'Edit', edit_article_path(article)
           -else
-            %td= "Restricted Author Access"
+            - flash[:error] = "Restricted Author Access"
+            %td= "  "
         -else
-          %td= "Restricted Access"
+          - flash[:error] = "Restricted Access"
+          %td= " "
 
         - if can? :destroy, Article
           - if (current_user.id == article.user_id and current_user.role.name == 'author') or current_user.role.name == 'admin'
@@ -76,9 +75,11 @@
                 method: :delete,                          |
                 data: { confirm: 'Are you sure?' }        |
           -else
-            %td= "Restricted Author Access"
+            - flash[:error] = "Restricted Author Access"
+            %td= " "
         -else
-          %td= "Restricted  Access"
+          - flash[:error] = "Restricted Access"
+          %td= " "
         
         %td= raw article.tag_list.map { |t| link_to t,tag_path(t) }.join(', ')
     = will_paginate @articles
