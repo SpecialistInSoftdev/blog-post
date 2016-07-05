@@ -5,7 +5,8 @@
   .col-sm-5
     %h1 Listing articles
   .col-sm-2
-    %h4.text-right= link_to 'Create New article', new_article_path
+    - if can? :create, Article
+      %h4.text-right= link_to 'Create New article', new_article_path
 .row
   .col-xs-4
     / Blog Sidebar Widgets Column
@@ -19,16 +20,13 @@
               %span.glyphicon.glyphicon-search 
 
   .col-xs-4
-    / Blog Sidebar Widgets Column
-    .form-group
-      %h4 new tag Search
-      .input-group
-        = search_form_for @search, url: articles_url do |f|
-          %span.input-group-btn
-            = f.select :tags_name_cont, options_for_select(@tags), {}, {required: 'true', autofocus: 'true', class: 'e1', placeholder: 'Please select'}
-            %button.btn.btn-default{:type => "submit"}
-              %span.glyphicon.glyphicon-search
-
+  
+    %h4
+      new tag Search
+      = search_form_for @search, url: articles_url do |f|
+        = f.select :tags_name_cont, options_for_select(@tags), {}, {required: 'true', autofocus: 'true', class: 'e1', placeholder: 'Please select'}
+        %button.btn.btn-default{:type => "submit"}
+          %span.glyphicon.glyphicon-search 
 
 - if flash[:notice]
   .row
@@ -61,10 +59,28 @@
         %td= article.created_at
         %td= image_tag article.image.url(:thumb)
         %td= link_to 'Show', article_path(article)
-        %td= link_to 'Edit', edit_article_path(article)
-        %td= link_to 'Destroy', article_path(article), |
-            method: :delete,                          |
-            data: { confirm: 'Are you sure?' }        |
+        - if can? :update, Article
+          - if (current_user.id == article.user_id and current_user.role.name == 'author') or current_user.role.name == 'admin'
+            %td= link_to 'Edit', edit_article_path(article)
+          -else
+            - flash[:error] = "Restricted Author Access"
+            %td= "  "
+        -else
+          - flash[:error] = "Restricted Access"
+          %td= " "
+
+        - if can? :destroy, Article
+          - if (current_user.id == article.user_id and current_user.role.name == 'author') or current_user.role.name == 'admin'
+            %td= link_to 'Destroy', article_path(article), |
+                method: :delete,                          |
+                data: { confirm: 'Are you sure?' }        |
+          -else
+            - flash[:error] = "Restricted Author Access"
+            %td= " "
+        -else
+          - flash[:error] = "Restricted Access"
+          %td= " "
+        
         %td= raw article.tag_list.map { |t| link_to t,tag_path(t) }.join(', ')
     = will_paginate @articles
     

@@ -52,8 +52,8 @@ gem 'therubyracer'
 gem 'devise'
 # jquery selector
 gem "select2-rails"
-
-
+#adds authorization
+gem 'cancancan', '~> 1.10'
 # bootstrap
 gem "twitter-bootstrap-rails"
 # best practice guide tool

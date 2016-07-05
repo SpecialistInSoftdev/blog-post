@@ -1,7 +1,8 @@
 = bootstrap_form_for([@article, @article.comments.build]) do |f|
   .row
     %p
-      = f.text_field :commenter
+      = f.label :current_user 
+      = "add comment as @#{current_user.email.split('@')[0]}"
   .row
     %p
       = f.text_area :body
